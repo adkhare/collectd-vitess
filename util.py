@@ -134,7 +134,7 @@ def create_metric(epoch_time, metric_name, data, tag_list):
     for key in data.keys():
         tags = extract_tags(key, '.', tag_list)
         if tags != "-1":
-            publish_metric(epoch_time, metric_name, data[key], 'counter', tags)
+            publish_metric(epoch_time, metric_name, data[key], 'gauge', tags)
 
     leave(method_name)
 
