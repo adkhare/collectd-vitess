@@ -9,7 +9,6 @@ import collectd
 import logging
 
 PREFIX = "vitess"
-VT_UID = "vtgate"
 
 class CollectdLogHandler(logging.Handler):
     """Log handler to forward statements to collectd
@@ -194,7 +193,6 @@ def publish_metric(epoch_time, metric_name, metric_value, type, tags):
             tag_str += key + "=" + tags[key]
             i += 1
             tag_str += " "
-    tag_str += "uid=" + VT_UID
     val               = collectd.Values(plugin='vitess', plugin_instance=metric_name)
     val.type          = type
     val.type_instance = tag_str
